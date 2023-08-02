@@ -3,7 +3,10 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "lint": "nx run repro-invalid-nx-cache:lint"
+    "lint": "nx run repro-invalid-nx-cache:lint",
+    "lint:withoutCache": "nx run repro-invalid-nx-cache:lint --skip-nx-cache",
+    "downgrade": "npm i -E -D @ngrx/eslint-plugin@16.0.1",
+    "upgrade": "npm i -E -D @ngrx/eslint-plugin@16.1.0"
   },
   "private": true,
   "dependencies": {
