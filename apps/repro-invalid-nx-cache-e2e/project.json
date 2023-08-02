@@ -1,0 +1,33 @@
+{
+  "name": "repro-invalid-nx-cache-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/repro-invalid-nx-cache-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/repro-invalid-nx-cache-e2e/cypress.config.ts",
+        "devServerTarget": "repro-invalid-nx-cache:serve:development",
+        "testingType": "e2e"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "repro-invalid-nx-cache:serve:production"
+        },
+        "ci": {
+          "devServerTarget": "repro-invalid-nx-cache:serve-static"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/repro-invalid-nx-cache-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["repro-invalid-nx-cache"]
+}
